@@ -23,13 +23,16 @@ PODS:
   - BDBOAuth1Manager (1.5.0):
     - AFNetworking/NSURLConnection (~> 2.5.0)
     - AFNetworking/NSURLSession (~> 2.5.0)
+  - FXForms (1.2.13)
 
 DEPENDENCIES:
   - AFNetworking
   - BDBOAuth1Manager
+  - FXForms
 
 SPEC CHECKSUMS:
   AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
   BDBOAuth1Manager: 2e28773b58f880fb36b5cd3efcf0b1fefbc78a99
+  FXForms: 22d5ceafd8ca44d2f2be4827afcf00aaf80184a5
 
 COCOAPODS: 0.39.0.beta.3

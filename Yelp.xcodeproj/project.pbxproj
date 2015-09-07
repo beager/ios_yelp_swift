@@ -19,6 +19,7 @@
 		A907F2B21B9AA7CA005D1E8E /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A907F2B11B9AA7CA005D1E8E /* BusinessCell.swift */; };
 		A907F2B41B9B86C5005D1E8E /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A907F2B31B9B86C5005D1E8E /* SwitchCell.swift */; };
 		A907F2B61B9B87A6005D1E8E /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A907F2B51B9B87A6005D1E8E /* FiltersViewController.swift */; };
+		A92159C71B9E194700ECE1A2 /* FiltersForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92159C61B9E194700ECE1A2 /* FiltersForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		A907F2B11B9AA7CA005D1E8E /* BusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
 		A907F2B31B9B86C5005D1E8E /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		A907F2B51B9B87A6005D1E8E /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		A92159C61B9E194700ECE1A2 /* FiltersForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersForm.swift; sourceTree = "<group>"; };
 		BBD540129B10DFE60E8C24E2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C56EF0CE844A4EE5819C72AF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -99,6 +101,7 @@
 				22AAAA9A1AEA0AA100A544AF /* Models */,
 				222D8A7A19CCFAAA00D2DB53 /* API */,
 				22AAAA9D1AEA1EC600A544AF /* View Controllers */,
+				A92159C81B9E195700ECE1A2 /* Forms */,
 				222D8A5A19CCF9F900D2DB53 /* AppDelegate.swift */,
 				222D8A5E19CCF9F900D2DB53 /* Main.storyboard */,
 				222D8A6119CCF9F900D2DB53 /* Images.xcassets */,
@@ -174,6 +177,14 @@
 				A907F2B31B9B86C5005D1E8E /* SwitchCell.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		A92159C81B9E195700ECE1A2 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				A92159C61B9E194700ECE1A2 /* FiltersForm.swift */,
+			);
+			name = Forms;
 			sourceTree = "<group>";
 		};
 		F4A9A6AAA6A538FE245C4A17 /* Pods */ = {
@@ -321,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A907F2B21B9AA7CA005D1E8E /* BusinessCell.swift in Sources */,
+				A92159C71B9E194700ECE1A2 /* FiltersForm.swift in Sources */,
 				22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */,
 				A907F2B61B9B87A6005D1E8E /* FiltersViewController.swift in Sources */,
 				22AAAA991AEA0A9700A544AF /* Business.swift in Sources */,
