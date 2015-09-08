@@ -8,41 +8,85 @@
 
 import UIKit
 
+class CustomFormValueTransformer: NSValueTransformer {
+    
+    override class func transformedValueClass() -> AnyClass {
+        
+        return NSString.self
+    }
+    
+    override class func allowsReverseTransformation() -> Bool {
+        
+        return false
+    }
+    
+    override func transformedValue(value: AnyObject?) -> AnyObject? {
+        if (value == nil) {
+            return nil
+        }
+        let value = value as! String
+        
+        for (key, dicts) in yelpFormInfo {
+            for dict in dicts {
+                if dict["code"] == value {
+                    return dict["name"]
+                }
+            }
+        }
+
+        return value
+    }
+}
 
 class FiltersForm: NSObject, FXForm {
     
-    var email: String?
-    var password: String?
-    var repeatPassword: String?
+    var deals: UInt = 0
+    var distance: String = "distance_auto"
+    var sortMode: String = "sort_0"
+    var categories: NSArray?
     
-    var name: String?
-    var gender = 0
-    var age: UInt = 0
-    var dateOfBirth: NSDate?
-    var profilePhoto: UIImage?
-    var phone: String?
-    var country: String?
-    var language: String?
-    var interests: NSArray? //NOTE: [String] or [AnyObject] won't work
-    var otherInterests = 0
-    var about: String?
-    
-    var plan: Int = 0
-    
-    var notifications: String?
-    
-    var agreedToTerms = false
-    
-    //because we want to rearrange how this form
-    //is displayed, we've implemented the fields array
-    //which lets us dictate exactly which fields appear
-    //and in what order they appear
+    func keysForField(field: String) -> [String]! {
+        for (category, dicts) in yelpFormInfo {
+            if category == field {
+                var output = [String]()
+                for dict in dicts {
+                    output.append(dict["code"]!)
+                }
+                return output
+            }
+        }
+        return []
+    }
     
     func fields() -> [AnyObject]! {
+        // shouldn't be doing this here
+        deals = YelpClient.sharedInstance.deals != nil ? 1 : 0
+        categories = YelpClient.sharedInstance.categories ?? []
         return [
+            [FXFormFieldKey: "deals", FXFormFieldTitle: "Offering a deal", FXFormFieldType: FXFormFieldTypeBoolean],
+
+            [
+                FXFormFieldKey: "distance",
+                FXFormFieldTitle: "Distance",
+                FXFormFieldOptions: keysForField("distance"),
+                FXFormFieldValueTransformer: CustomFormValueTransformer()
+            ],
             
-            //we want to add a group header for the field set of fields
-            //we do that by adding the header key to the first field in the group
+            [
+                FXFormFieldKey: "sortMode",
+                FXFormFieldTitle: "Sort by",
+                FXFormFieldOptions: keysForField("sort"),
+                FXFormFieldValueTransformer: CustomFormValueTransformer()
+            ],
+
+            [
+                FXFormFieldKey: "categories",
+                FXFormFieldTitle: "Categories",
+                FXFormFieldOptions: keysForField("categories"),
+                FXFormFieldValueTransformer: CustomFormValueTransformer()
+            ],
+            [FXFormFieldTitle: "Submit", FXFormFieldHeader: "", FXFormFieldAction: "submitRegistrationForm:"]
+            /*[FXFormFieldKey: "agreedToTerms", FXFormFieldTitle: "I Agree To These Terms", FXFormFieldType: FXFormFieldTypeOption],
             
             [FXFormFieldKey: "email", FXFormFieldHeader: "Account"],
             
@@ -143,7 +187,7 @@ class FiltersForm: NSObject, FXForm {
             //object in the responder chain that implements the submitForm
             //method, which in this case would be the AppDelegate
             
-            [FXFormFieldTitle: "Submit", FXFormFieldHeader: "", FXFormFieldAction: "submitRegistrationForm:"],
+            [FXFormFieldTitle: "Submit", FXFormFieldHeader: "", FXFormFieldAction: "submitRegistrationForm:"],*/
         ]
     }
 }

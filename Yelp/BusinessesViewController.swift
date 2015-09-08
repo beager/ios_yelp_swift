@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate {
+class BusinessesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FormFiltersViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     var businesses: [Business]!
@@ -71,14 +71,57 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         let navigationController = segue.destinationViewController as! UINavigationController
-        let filtersViewController = navigationController.topViewController as! FiltersViewController
+        let filtersViewController = navigationController.topViewController as! FormFiltersViewController
         filtersViewController.delegate = self
     }
     
-    func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
+    func formFiltersViewController(formFiltersViewController: FormFiltersViewController, didUpdateFilters filters: FiltersForm) {
         
-        var categories = filters["categories"] as? [String]
-        Business.searchWithTerm("Restaurants", sort: nil, categories: categories, deals: nil) { (businesses: [Business]!, error: NSError!) -> Void in
+        if filters.sortMode != "" {
+            var translatedSortMode: YelpSortMode!
+            switch filters.sortMode {
+                case "sort_0":
+                    translatedSortMode = .BestMatched
+                case "sort_1":
+                    translatedSortMode = .Distance
+                case "sort_2":
+                    translatedSortMode = .HighestRated
+                default:
+                    translatedSortMode = .BestMatched
+            }
+            YelpClient.sharedInstance.sort = translatedSortMode
+        }
+        
+        YelpClient.sharedInstance.deals = filters.deals > 0 ? true : false
+        
+        if filters.categories?.count > 0 {
+            YelpClient.sharedInstance.categories = filters.categories as! [String]
+        } else {
+            YelpClient.sharedInstance.categories = []
+        }
+        
+        var translatedDistance: Int!
+        switch filters.distance {
+            case "distance_0_3":
+                translatedDistance = 483
+            case "distance_1":
+                translatedDistance = 1609
+            case "distance_5":
+                translatedDistance = 8047
+            case "distance_20":
+                translatedDistance = 32187
+            case "distance_auto":
+                translatedDistance = -1
+        default:
+                translatedDistance = -1
+        }
+        
+        if translatedDistance > 0 {
+            YelpClient.sharedInstance.radius = translatedDistance
+        } else {
+            YelpClient.sharedInstance.radius = nil
+        }
+        YelpClient.sharedInstance.search { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
             self.tableView.reloadData()
         }

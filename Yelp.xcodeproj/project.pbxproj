@@ -20,6 +20,7 @@
 		A907F2B41B9B86C5005D1E8E /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A907F2B31B9B86C5005D1E8E /* SwitchCell.swift */; };
 		A907F2B61B9B87A6005D1E8E /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A907F2B51B9B87A6005D1E8E /* FiltersViewController.swift */; };
 		A92159C71B9E194700ECE1A2 /* FiltersForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92159C61B9E194700ECE1A2 /* FiltersForm.swift */; };
+		A92159CA1B9E1B4800ECE1A2 /* FormFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92159C91B9E1B4800ECE1A2 /* FormFiltersViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		A907F2B31B9B86C5005D1E8E /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		A907F2B51B9B87A6005D1E8E /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		A92159C61B9E194700ECE1A2 /* FiltersForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersForm.swift; sourceTree = "<group>"; };
+		A92159C91B9E1B4800ECE1A2 /* FormFiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormFiltersViewController.swift; sourceTree = "<group>"; };
 		BBD540129B10DFE60E8C24E2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C56EF0CE844A4EE5819C72AF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -158,6 +160,7 @@
 			children = (
 				22AAAA9B1AEA1EC300A544AF /* BusinessesViewController.swift */,
 				A907F2B51B9B87A6005D1E8E /* FiltersViewController.swift */,
+				A92159C91B9E1B4800ECE1A2 /* FormFiltersViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			files = (
 				A907F2B21B9AA7CA005D1E8E /* BusinessCell.swift in Sources */,
 				A92159C71B9E194700ECE1A2 /* FiltersForm.swift in Sources */,
+				A92159CA1B9E1B4800ECE1A2 /* FormFiltersViewController.swift in Sources */,
 				22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */,
 				A907F2B61B9B87A6005D1E8E /* FiltersViewController.swift in Sources */,
 				22AAAA991AEA0A9700A544AF /* Business.swift in Sources */,
