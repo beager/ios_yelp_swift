@@ -18,6 +18,7 @@ class FormFiltersViewController: FXFormViewController {
     }
     
     @IBAction func onSearchButton(sender: AnyObject) {
+        
     }
     
     weak var delegate: FormFiltersViewControllerDelegate?
@@ -44,21 +45,6 @@ class FormFiltersViewController: FXFormViewController {
         
         //we can lookup the form from the cell if we want, like this:
         let form = cell.field.form as! FiltersForm
-        
-        //we can then perform validation, etc
-        /*if form.agreedToTerms {
-            
-            UIAlertView(title: "Registration Form Submitted", message: "", delegate: nil, cancelButtonTitle: "OK").show()
-            
-        } else {
-            
-            UIAlertView(title: "User Error", message: "Please agree to the terms and conditions before proceeding", delegate: nil, cancelButtonTitle: "OK", otherButtonTitles: "Yes Sir!").show()
-        }*/
-        
-        println(form.categories)
-        println(form.sortMode)
-        println(form.distance)
-        println(form.deals)
         
         delegate?.formFiltersViewController?(self, didUpdateFilters: form)
         dismissViewControllerAnimated(true, completion: nil)
