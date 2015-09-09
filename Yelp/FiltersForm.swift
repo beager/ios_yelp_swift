@@ -40,9 +40,9 @@ class CustomFormValueTransformer: NSValueTransformer {
 
 class FiltersForm: NSObject, FXForm {
     
-    var deals: UInt = 0
-    var distance: String = "distance_auto"
-    var sortMode: String = "sort_0"
+    var deals: AnyObject?
+    var distance: String?
+    var sortMode: String?
     var categories: NSArray?
     
     func keysForField(field: String) -> [String]! {
@@ -59,9 +59,11 @@ class FiltersForm: NSObject, FXForm {
     }
     
     func fields() -> [AnyObject]! {
-        // shouldn't be doing this here
-        deals = YelpClient.sharedInstance.deals != nil ? 1 : 0
-        categories = YelpClient.sharedInstance.categories ?? []
+        // This is most definitely an anti-pattern. Hooking into the global shared instance at this point to set form parameters isn't good. This should instead be sending into the FXForm through the view controller chain etc. I just haven't looked into FXForm enough to know how to pass stuff in, so we're doing it this way.
+        deals = YelpClient.sharedInstance.deals
+        categories = YelpClient.sharedInstance.categories
+        sortMode = YelpClient.sharedInstance.sort
+        distance = YelpClient.sharedInstance.radius
         return [
             [FXFormFieldKey: "deals", FXFormFieldTitle: "Offering a deal", FXFormFieldType: FXFormFieldTypeBoolean],
 

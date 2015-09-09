@@ -41,18 +41,18 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Da Nonna Rosa" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hu7-lI-10H">
-                                                    <rect key="frame" x="81" y="8" width="181" height="19.5"/>
+                                                    <rect key="frame" x="81" y="8" width="181" height="20"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="0.07 mi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2N-Vl-SrQ">
-                                                    <rect key="frame" x="270" y="11" width="41.5" height="14.5"/>
+                                                    <rect key="frame" x="270" y="11" width="42" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="140 Reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8oH-6z-Vi6">
-                                                    <rect key="frame" x="169" y="33" width="71" height="14.5"/>
+                                                    <rect key="frame" x="169" y="33" width="71" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="american, pizza, other" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gtr-4n-QVM">
-                                                    <rect key="frame" x="81" y="73" width="123" height="14.5"/>
+                                                    <rect key="frame" x="81" y="73" width="123" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -137,7 +137,7 @@
         <!--Filters-->
         <scene sceneID="Vh3-Kb-mv8">
             <objects>
-                <viewController id="1bG-pv-tyW" customClass="FormFiltersViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1bG-pv-tyW" customClass="FiltersViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pAK-bA-2TJ"/>
                         <viewControllerLayoutGuide type="bottom" id="sBz-b7-Zei"/>
@@ -145,7 +145,49 @@
                     <view key="view" contentMode="scaleToFill" id="2u2-lc-nql">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="E8i-mE-sD7">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" id="b6E-bz-6EU" customClass="SwitchCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b6E-bz-6EU" id="1tt-j8-2t5">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVU-oL-Tq6">
+                                                    <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cxb-8J-iAh">
+                                                    <rect key="frame" x="263" y="6" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Cxb-8J-iAh" secondAttribute="trailing" constant="8" id="3lI-Wl-Djd"/>
+                                                <constraint firstAttribute="centerY" secondItem="Cxb-8J-iAh" secondAttribute="centerY" id="Q3b-gi-BLe"/>
+                                                <constraint firstAttribute="centerY" secondItem="XVU-oL-Tq6" secondAttribute="centerY" id="TQc-PO-JZy"/>
+                                                <constraint firstItem="XVU-oL-Tq6" firstAttribute="leading" secondItem="1tt-j8-2t5" secondAttribute="leading" constant="8" id="zba-NO-4Zw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="onSwitch" destination="Cxb-8J-iAh" id="d2Q-cS-R2F"/>
+                                            <outlet property="switchLabel" destination="XVU-oL-Tq6" id="EG8-ti-Mrt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sBz-b7-Zei" firstAttribute="top" secondItem="E8i-mE-sD7" secondAttribute="bottom" id="9uH-gO-Kyq"/>
+                            <constraint firstAttribute="trailing" secondItem="E8i-mE-sD7" secondAttribute="trailing" id="Cci-LO-DD9"/>
+                            <constraint firstItem="E8i-mE-sD7" firstAttribute="top" secondItem="2u2-lc-nql" secondAttribute="top" id="Ffg-cg-wYD"/>
+                            <constraint firstItem="E8i-mE-sD7" firstAttribute="leading" secondItem="2u2-lc-nql" secondAttribute="leading" id="d7U-eo-TdD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="BV3-RM-XqD">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="EK2-Q7-ufM">
@@ -159,6 +201,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="EK2-Q7-ufM" id="QGr-lS-xZQ"/>
+                        <outlet property="searchButton" destination="wwM-Gu-qLi" id="oeg-cf-N92"/>
+                        <outlet property="tableView" destination="E8i-mE-sD7" id="Jsm-hQ-vp0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6E-TW-JQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

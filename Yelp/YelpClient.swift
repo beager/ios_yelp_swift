@@ -210,10 +210,10 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     
     var term: String?
     var ll: String?
-    var sort: YelpSortMode?
+    var sort: String?
     var categories: [String]?
-    var deals: Bool?
-    var radius: Int?
+    var deals: AnyObject?
+    var radius: String?
     
     class var sharedInstance : YelpClient {
         struct Static {
@@ -258,7 +258,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         if categories != nil && categories!.count > 0 {
             parameters["category_filter"] = ",".join(categories!)
         }
-        
+        println(deals)
         if deals != nil {
             parameters["deals_filter"] = deals!
         }
@@ -281,21 +281,52 @@ class YelpClient: BDBOAuth1RequestOperationManager {
             "ll": "37.785771,-122.406165"
         ]
         
-        if sort != nil {
-            parameters["sort"] = sort!.rawValue
-        }
-        
         if categories != nil && categories!.count > 0 {
             parameters["category_filter"] = ",".join(categories!)
         }
-        
+        println(deals)
         if deals != nil {
-            parameters["deals_filter"] = deals!
+            parameters["deals_filter"] = deals
         }
         
         if radius != nil {
-            parameters["radius_filter"] = radius
+            var translatedRadius: Int!
+            switch radius! {
+            case "distance_0_3":
+                translatedRadius = 483
+            case "distance_1":
+                translatedRadius = 1609
+            case "distance_5":
+                translatedRadius = 8047
+            case "distance_20":
+                translatedRadius = 32187
+            case "distance_auto":
+                translatedRadius = -1
+            default:
+                translatedRadius = -1
+            }
+            if translatedRadius > 0 {
+                parameters["radius_filter"] = translatedRadius
+            }
         }
+        
+        if sort != nil {
+            var translatedSortMode: YelpSortMode!
+            switch sort! {
+            case "sort_0":
+                translatedSortMode = .BestMatched
+            case "sort_1":
+                translatedSortMode = .Distance
+            case "sort_2":
+                translatedSortMode = .HighestRated
+            default:
+                translatedSortMode = .BestMatched
+            }
+            parameters["sort"] = translatedSortMode.rawValue
+        }
+        
+        println(parameters)
+
 
         return self.GET("search", parameters: parameters, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             var dictionaries = response["businesses"] as? [NSDictionary]
