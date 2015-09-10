@@ -21,6 +21,7 @@ class SwitchCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        separatorInset = UIEdgeInsetsZero
         // Initialization code
         
         onSwitch.addTarget(self, action: "switchValueChanged", forControlEvents: UIControlEvents.ValueChanged)

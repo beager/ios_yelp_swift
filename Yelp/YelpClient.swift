@@ -201,6 +201,9 @@ let yelpFormInfo: [String:[Dictionary<String, String>]] = [
         ["name" : "Best Match", "code": "sort_0"],
         ["name" : "Distance", "code": "sort_1"],
         ["name" : "Highest Rated", "code": "sort_2"],
+    ],
+    "deals": [
+        ["name" : "Offering a deal?", "code": "deals"]
     ]
 ]
 
@@ -211,7 +214,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     var term: String?
     var ll: String?
     var sort: String?
-    var categories: [String]?
+    var categories: [String] = [String]()
     var deals: AnyObject?
     var radius: String?
     
@@ -281,8 +284,8 @@ class YelpClient: BDBOAuth1RequestOperationManager {
             "ll": "37.785771,-122.406165"
         ]
         
-        if categories != nil && categories!.count > 0 {
-            parameters["category_filter"] = ",".join(categories!)
+        if categories.count > 0 {
+            parameters["category_filter"] = ",".join(categories)
         }
         println(deals)
         if deals != nil {

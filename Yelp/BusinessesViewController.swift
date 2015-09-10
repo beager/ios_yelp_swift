@@ -76,22 +76,11 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         filtersViewController.delegate = self
     }
     
-    func formFiltersViewController(formFiltersViewController: FormFiltersViewController, didUpdateFilters filters: FiltersForm) {
-
-        YelpClient.sharedInstance.sort = filters.sortMode
-        YelpClient.sharedInstance.deals = filters.deals
-        YelpClient.sharedInstance.categories = filters.categories as! [String]?
-        YelpClient.sharedInstance.radius = filters.distance
-
-        YelpClient.sharedInstance.search { (businesses: [Business]!, error: NSError!) -> Void in
-            self.businesses = businesses
-            self.tableView.reloadData()
-        }
-    }
-    
     func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
         YelpClient.sharedInstance.categories = filters["categories"] as! [String]
-        
+        YelpClient.sharedInstance.sort = filters["sortMode"] as! String
+        YelpClient.sharedInstance.deals = filters["deals"]
+        YelpClient.sharedInstance.radius = filters["distance"] as! String
         YelpClient.sharedInstance.search { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
             self.tableView.reloadData()

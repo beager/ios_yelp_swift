@@ -35,4 +35,4 @@ SPEC CHECKSUMS:
   BDBOAuth1Manager: 2e28773b58f880fb36b5cd3efcf0b1fefbc78a99
   FXForms: 22d5ceafd8ca44d2f2be4827afcf00aaf80184a5
 
-COCOAPODS: 0.39.0.beta.3
+COCOAPODS: 0.38.2
